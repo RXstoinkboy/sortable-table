@@ -1,3 +1,14 @@
+# sortable-table project
+In order to start the application in local environment:
+
+```
+git clone https://github.com/RXstoinkboy/sortable-table.git
+npm i
+npm start
+```
+
+Or you can see demo [directly](https://silly-haibt-46d88a.netlify.app)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
