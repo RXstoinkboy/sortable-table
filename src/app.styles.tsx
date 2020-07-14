@@ -4,7 +4,8 @@ export const TableWrapper = styled.div`
   width: 100%;
   max-width: 600px;
   height: auto;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   display: block;
 `;
 

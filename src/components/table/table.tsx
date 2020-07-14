@@ -20,6 +20,7 @@ export default function Table({ tableConfig, tableData }: Props): ReactElement {
     SortingDirectionType
   >("asc");
   const [sortedTableData, setSortedTableData] = useState<TableData>(tableData);
+  const [animate, setAnimate] = useState<boolean>(true)
 
   const changeSortingDirection = () => {
     sortingDirection === "asc"
@@ -35,7 +36,12 @@ export default function Table({ tableConfig, tableData }: Props): ReactElement {
     if (currentSortingKey !== event.currentTarget.id)
       setSortingDirection("asc"); // change sorting direstion to default 'asc' if sortingKey has been changed
     setCurrentSortingKey(event.currentTarget.id as SortingKeyType);
+    setAnimate(true)
   };
+
+  const handleEndAnimation = () => {
+    setAnimate(false)
+  }
 
   // actual sorting function
   useMemo(() => {
@@ -60,7 +66,7 @@ export default function Table({ tableConfig, tableData }: Props): ReactElement {
           handleClick={handleClick}
           sortingDirection={sortingDirection}
         />
-        <TableBody tableData={sortedTableData} />
+        <TableBody tableData={sortedTableData} animate={animate} handleEndAnimation={handleEndAnimation} />
       </StyledTable>
     </div>
   );

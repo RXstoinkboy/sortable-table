@@ -1,8 +1,17 @@
-import styled from "styled-components";
+import styled, {keyframes, css} from "styled-components";
 
-const TableCell = styled.td`
+const fadeIn = keyframes`
+  from{
+    color: transparent
+  }
+`
+
+const TableCell = styled.td<Props>`
   padding: 10px 15px;
   text-align: center;
+  
+  ${(p) => p.animate ? animationMixin : ''};
+  animation-delay: ${(p) => p.animationDelay * 100}ms;
 
   &:last-child {
     position: sticky;
@@ -17,6 +26,15 @@ const TableCell = styled.td`
     background: ${(p) => p.theme.stickyColumnRowBackground};
   }
 `;
+
+type Props = {
+  animate: boolean
+  animationDelay: number
+}
+
+const animationMixin = css`
+  animation: ${fadeIn} 1s ease-in-out forwards;
+`
 
 export const StyledTableRow = styled.tr`
   position: relative;
